@@ -1,7 +1,7 @@
 (function () {
   const cardsData = [
     {
-      imgSrc: "/assets/images/app.jpg",
+      imgSrc: "assets/images/app.jpg",
       alt: "App Development",
       pill: "MOBILE",
       title: "App<br/>Development",
@@ -9,7 +9,7 @@
       iconPlaceholder: "📱"
     },
     {
-      imgSrc: "/assets/images/cloud.jpg",
+      imgSrc: "assets/images/cloud.jpg",
       alt: "Cloud Computing",
       pill: "CLOUD",
       title: "Cloud<br/>Computing",
@@ -17,7 +17,7 @@
       iconPlaceholder: "☁️"
     },
     {
-      imgSrc: "/assets/images/ai.jpg",
+      imgSrc: "assets/images/ai.jpg",
       alt: "AI Solutions",
       pill: "AI",
       title: "AI",
@@ -25,7 +25,7 @@
       iconPlaceholder: "🤖"
     },
     {
-      imgSrc: "/assets/images/redhat.jpg",
+      imgSrc: "assets/images/redhat.jpg",
       alt: "Red Hat Consultancy",
       pill: "RED HAT",
       title: "Red Hat<br/>Consultancy",
@@ -33,7 +33,7 @@
       iconPlaceholder: "🖥️"
     },
     {
-      imgSrc: "/assets/images/data.jpg",
+      imgSrc: "assets/images/data.jpg",
       alt: "Data and Analytics",
       pill: "ANALYTICS",
       title: "Data and<br/>analytics",
@@ -41,7 +41,7 @@
       iconPlaceholder: "📊"
     },
     {
-      imgSrc: "/assets/images/web.jpg",
+      imgSrc: "assets/images/web.jpg",
       alt: "Web Development",
       pill: "WEB",
       title: "Web<br/>Development",
