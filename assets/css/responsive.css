@@ -113,10 +113,10 @@
     --wave-h:   60px;
   }
 
-  .logo__tagline { display: none; }
+  .logo__tagline {  font-size: 11px;  }
 
   .logo__text {
-    font-size: 1.05rem;
+    font-size: 1.30rem;
   }
 
   .nav__list {
