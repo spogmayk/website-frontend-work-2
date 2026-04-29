@@ -1,0 +1,242 @@
+/* ============================================================
+   animations.css — Codemargin  (v2 — all animations)
+   ============================================================ */
+
+/* ── 1. Page-load fade-up ─────────────────────────────────── */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: fadeUp 0.72s var(--ease-out) both;
+  animation-play-state: paused;
+}
+
+body.page-loaded .animate-fade-up {
+  animation-play-state: running;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+@keyframes codePulse {
+  0%, 100% { opacity: 1;    text-shadow: 0 0 4px rgba(224,32,32,0.6); }
+  50%       { opacity: 0.55; text-shadow: none; }
+}
+
+/* ── 3. BADGE — always visible + 2-wave megaphone ripple ─────── */
+
+.hero__badge {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: badgeIdlePulse 4s ease-in-out infinite !important;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+@keyframes badgeIdlePulse {
+  0%, 100% { box-shadow: 0 0 0   0 rgba(255,255,255,0.08); }
+  60%       { box-shadow: 0 0 0 7px rgba(255,255,255,0.00); }
+}
+
+/* Only 2 sound-wave arcs in the new SVG */
+.sound-wave--1 { animation: soundPulse 2s ease-in-out infinite 0.00s; }
+.sound-wave--2 { animation: soundPulse 2s ease-in-out infinite 0.30s; }
+
+@keyframes soundPulse {
+  0%, 100% { opacity: 0.20; stroke-width: 1.5; }
+  50%       { opacity: 1.00; stroke-width: 2.2; }
+}
+
+/* ── 4. WAVE — drawn on canvas by animations.js ─────────────
+   No CSS animation needed here. The canvas wave is JS-driven.
+   ─────────────────────────────────────────────────────────── */
+
+/* ── 5. Hero blobs — slow gentle drift ─────────────────────── */
+.hero__blob--1 { animation: blobDrift1 18s ease-in-out infinite; }
+.hero__blob--2 { animation: blobDrift2 22s ease-in-out infinite 3s; }
+.hero__blob--3 { animation: blobDrift3 26s ease-in-out infinite 7s; }
+.hero__blob--4 { animation: blobDrift4 20s ease-in-out infinite 5s; }
+
+@keyframes blobDrift1 {
+  0%, 100% { transform: translate(0,    0)    scale(1);    }
+  33%       { transform: translate(-4%, 6%)   scale(1.06); }
+  66%       { transform: translate(3%, -4%)   scale(0.96); }
+}
+@keyframes blobDrift2 {
+  0%, 100% { transform: translate(0,    0)    scale(1);    }
+  40%       { transform: translate(5%,  4%)   scale(1.08); }
+  70%       { transform: translate(-3%, -5%)  scale(0.94); }
+}
+@keyframes blobDrift3 {
+  0%, 100% { transform: translate(0,   0)     scale(1);    }
+  50%       { transform: translate(-5%, 8%)   scale(1.10); }
+}
+@keyframes blobDrift4 {
+  0%, 100% { transform: translate(0,   0)     scale(1);    }
+  30%       { transform: translate(6%, -6%)   scale(1.07); }
+  65%       { transform: translate(-4%, 4%)   scale(0.93); }
+}
+
+/* ── 5. Gradient button shimmer ───────────────────────────── */
+.btn--gradient {
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+  transition: background-position 0.55s ease,
+              transform 0.3s var(--ease-out),
+              box-shadow 0.3s var(--ease-out);
+}
+.btn--gradient:hover { background-position: 100% 0%; }
+
+/* ── 6. Scroll-reveal utility (future sections) ───────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+.reveal-group.is-visible > *:nth-child(1) { transition-delay:0.05s; opacity:1; transform:none; }
+.reveal-group.is-visible > *:nth-child(2) { transition-delay:0.15s; opacity:1; transform:none; }
+.reveal-group.is-visible > *:nth-child(3) { transition-delay:0.25s; opacity:1; transform:none; }
+.reveal-group.is-visible > *:nth-child(4) { transition-delay:0.35s; opacity:1; transform:none; }
+.reveal-group.is-visible > *:nth-child(5) { transition-delay:0.45s; opacity:1; transform:none; }
+.reveal-group.is-visible > *:nth-child(6) { transition-delay:0.55s; opacity:1; transform:none; }
+
+/* ── 7. Desktop cursor glow ───────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  body::after {
+    content: '';
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(61,90,241,0.10) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    top:  var(--mouse-y, -999px);
+    left: var(--mouse-x, -999px);
+    transition: top 0.07s linear, left 0.07s linear;
+  }
+}
+
+/* ── 8. Respect prefers-reduced-motion ────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:       0.01ms !important;
+  }
+  .animate-fade-up { opacity: 1; transform: none; }
+  .reveal          { opacity: 1; transform: none; }
+}
+
+/* ---------- Section fade-in on load ---------- */
+@keyframes sectionReveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+.services-section {
+  animation: sectionReveal 0.75s cubic-bezier(0.4,0,0.2,1) both;
+}
+ 
+/* ---------- Strap heading ---------- */
+@keyframes headingSlideIn {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+ 
+.strap-heading {
+  animation: headingSlideIn 0.75s 0.1s cubic-bezier(0.4,0,0.2,1) both;
+}
+ 
+.strap-desc {
+  animation: headingSlideIn 0.75s 0.2s cubic-bezier(0.4,0,0.2,1) both;
+}
+ 
+.strap-arrows {
+  animation: headingSlideIn 0.75s 0.3s cubic-bezier(0.4,0,0.2,1) both;
+}
+ 
+/* ---------- Card entrance ---------- */
+@keyframes cardEntrance {
+  from { opacity: 0; transform: translateY(32px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+ 
+.service-card {
+  animation: cardEntrance 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.service-card:nth-child(1) { animation-delay: 0.15s; }
+.service-card:nth-child(2) { animation-delay: 0.25s; }
+.service-card:nth-child(3) { animation-delay: 0.35s; }
+.service-card:nth-child(4) { animation-delay: 0.45s; }
+.service-card:nth-child(5) { animation-delay: 0.55s; }
+.service-card:nth-child(6) { animation-delay: 0.65s; }
+ 
+/* ---------- Arrow button press ripple ---------- */
+@keyframes btnRipple {
+  from { box-shadow: 0 0 0 0 rgba(26,30,58,0.25); }
+  to   { box-shadow: 0 0 0 12px rgba(26,30,58,0); }
+}
+[data-theme="dark"] .arrow-btn:active {
+  animation: btnRippleDark 0.35s ease;
+}
+@keyframes btnRippleDark {
+  from { box-shadow: 0 0 0 0 rgba(200,210,240,0.25); }
+  to   { box-shadow: 0 0 0 12px rgba(200,210,240,0); }
+}
+ 
+/* ---------- Smooth theme colour sweeps ---------- */
+* {
+  transition-property:
+    background-color,
+    background,
+    border-color,
+    color,
+    box-shadow,
+    backdrop-filter;
+  transition-duration: 0.45s;
+  transition-timing-function: cubic-bezier(0.4,0,0.2,1);
+}
+ 
+/* Override: don't slow down interactive transforms */
+.service-card,
+.arrow-btn,
+.theme-toggle,
+.custom-cursor,
+.carousel-track {
+  transition-property: all;
+}
+
+
+
+
+/* wave divider bottom */
+
+
+.wave-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(80px, 10vw, 120px);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.wave-overlay svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
