@@ -17,7 +17,7 @@
       iconPlaceholder: "☁️"
     },
     {
-      imgSrc: "assets/images/ai.jpg",
+      imgSrc: "assets/images/AI.jpg",
       alt: "AI Solutions",
       pill: "AI",
       title: "AI",

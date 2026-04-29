@@ -10,17 +10,6 @@
      xl  ≥ 1280px
    ============================================================ */
 
-
-@media (max-width: 364px) {
-  .hero {
-    min-height: 10vh; 
-  }
-  .hero__content {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-}
-
 /* ── Large desktop (≥1280px) ─────────────────────────────── */
 @media (min-width: 1280px) {
   :root {
