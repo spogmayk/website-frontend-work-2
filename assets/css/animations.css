@@ -240,3 +240,24 @@ body.page-loaded .animate-fade-up {
   height: 100%;
   display: block;
 }
+
+/* Wave Performance Optimizations */
+/* Mobile animation optimization */
+@media (max-width: 767px) {
+  .wave-overlay svg {
+    animation-duration: 10s;
+  }
+}
+
+@media (max-width: 480px) {
+  .wave-overlay svg {
+    animation-duration: 12s;
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .wave-overlay svg {
+    animation: none !important;
+  }
+}

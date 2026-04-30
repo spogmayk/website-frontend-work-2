@@ -3031,6 +3031,57 @@ body {
   transition: fill 0.4s ease;
 }
 
+/* Responsive Wave Height Scaling */
+/* Ultra small devices (< 360px) */
+@media (max-width: 359px) {
+  .wave-overlay {
+    height: clamp(25px, 12vw, 40px);
+  }
+}
+
+/* Small devices (360px - 479px) */
+@media (min-width: 360px) and (max-width: 479px) {
+  .wave-overlay {
+    height: clamp(30px, 10vw, 50px);
+  }
+}
+
+/* Medium devices (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .wave-overlay {
+    height: clamp(35px, 8vw, 60px);
+  }
+}
+
+/* Large tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wave-overlay {
+    height: clamp(45px, 7vw, 80px);
+  }
+}
+
+/* Desktop (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .wave-overlay {
+    height: clamp(55px, 6vw, 90px);
+  }
+}
+
+/* Large desktop (1280px+) */
+@media (min-width: 1280px) {
+  .wave-overlay {
+    height: clamp(65px, 5vw, 100px);
+  }
+}
+
+/* Ultra wide screens (1920px+) */
+@media (min-width: 1920px) {
+  .wave-overlay {
+    height: clamp(80px, 4vw, 120px);
+    max-height: 150px;
+  }
+}
+
 
 #wavePath {
   fill: var(--wave-fill);        
