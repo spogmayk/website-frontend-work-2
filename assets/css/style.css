@@ -2948,7 +2948,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/assets/images/cta3.jpg); /* replace with real image */
+  background-image: url(../images/cta3.jpg); /* replace with real image */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3060,10 +3060,6 @@ body {
 
 
 /* ── 16. FOOTER ──────────────────────────────────────────── */
-
-
-
-
 
 .site-footer {
   background: var(--clr-footer-bg);
