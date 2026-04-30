@@ -177,12 +177,14 @@ ul  { list-style: none; }
 }
 
 .logo__tagline {
-  font-size: clamp(0.48rem, 0.8vw, 0.6rem);
+  font-size: clamp(0.45rem, 1.1vw, 0.65rem);
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.50);
-  margin-top: 3px;
+  margin-top: 2px;
+  line-height: 1.2;
+  display: block;
 }
 
 /* ── Nav ── */

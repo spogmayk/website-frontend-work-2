@@ -76,9 +76,11 @@
     --header-h: 64px;
   }
 
-  /* Hide the tagline below logo — saves space */
+  /* Logo tagline - visible and responsive */
   .logo__tagline {
-    display: none;
+    display: block;
+    font-size: clamp(0.42rem, 1.2vw, 0.52rem);
+    margin-top: 2px;
   }
 
   .nav__list {
@@ -174,7 +176,11 @@
     --wave-h:   60px;
   }
 
-  .logo__tagline { display: none; }
+  .logo__tagline {
+    display: block;
+    font-size: clamp(0.40rem, 1.3vw, 0.50rem);
+    margin-top: 2px;
+  }
 
   .logo__text {
     font-size: 1.05rem;
@@ -599,6 +605,22 @@
     gap: 1.2rem;
   }
 
+  .site-footer__brand {
+    text-align: center;
+  }
+
+  .site-footer__menu {
+    text-align: center;
+  }
+
+  .site-footer__contact {
+    text-align: center;
+  }
+
+  .site-footer__social {
+    justify-content: center;
+  }
+
   .site-footer__logo-text {
     font-size: 1.8rem;
   }
@@ -618,7 +640,11 @@
 
   /* Logo — smaller but still readable */
   .logo__text   { font-size: 0.95rem; }
-  .logo__tagline { display: none; }
+  .logo__tagline {
+    display: block;
+    font-size: clamp(0.38rem, 1.4vw, 0.48rem);
+    margin-top: 1px;
+  }
 
   /* Hide secondary nav items ("Case studies", "Career") */
   .nav__item--secondary {
@@ -790,6 +816,21 @@
     left: 8px;
     bottom: 6px;
   }
+  
+  .logo__tagline {
+    font-size: clamp(0.35rem, 1.5vw, 0.42rem);
+    margin-top: 1px;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1920px) {
+  .logo__tagline {
+    font-size: clamp(0.55rem, 0.9vw, 0.7rem);
+    letter-spacing: 0.12em;
+    margin-top: 3px;
+  }
 }
 
 
@@ -909,6 +950,23 @@
     gap: 1.1rem;
     padding-top: 1.8rem;
     padding-bottom: 1.8rem;
+    text-align: center;
+  }
+
+  .site-footer__brand {
+    text-align: center;
+  }
+
+  .site-footer__menu {
+    text-align: center;
+  }
+
+  .site-footer__contact {
+    text-align: center;
+  }
+
+  .site-footer__social {
+    justify-content: center;
   }
 
   .site-footer__logo-text {
@@ -927,12 +985,16 @@
 
   .site-footer__bottom {
     padding-block: 1.15rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
   }
 
   .site-footer__legal {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     gap: 0.75rem;
+    flex-wrap: wrap;
   }
 
   .site-footer__legal a,
