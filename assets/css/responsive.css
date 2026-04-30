@@ -356,6 +356,27 @@
   .arrow-btn {
     width: 44px;
     height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .arrow-btn svg {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+
+  .arrow-btn:active {
+    transform: scale(0.95);
   }
 }
 

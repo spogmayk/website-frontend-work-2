@@ -1819,9 +1819,33 @@ body {
   color: var(--arrow-color);
   border: none;
   transition: background-color 0.2s, color 0.2s;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .arrow-btn:hover {
   background-color: var(--arrow-btn-hover);
+}
+.arrow-btn:active {
+  transform: scale(0.95);
+}
+
+/* Mobile touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  .arrow-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px;
+  }
+  .arrow-btn:hover {
+    background-color: var(--arrow-btn-bg);
+    transform: none;
+  }
+  .arrow-btn:active {
+    background-color: var(--arrow-btn-hover);
+    transform: scale(0.95);
+  }
 }
 
 /* ========== Carousel Container ========== */
@@ -1980,17 +2004,50 @@ body {
       cursor: pointer;
       transition: all 0.2s ease;
       box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      position: relative;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .arrow-btn svg {
       width: 24px;
       height: 24px;
       stroke: #1f6e50;
       transition: transform 0.2s;
+      pointer-events: none;
     }
     .arrow-btn:hover {
       background: #e6f0f5;
       border-color: #b3cedf;
       transform: scale(1.02);
+    }
+    .arrow-btn:active {
+      transform: scale(0.96);
+      background: #d4e4ec;
+    }
+    
+    /* Mobile touch improvements */
+    @media (hover: none) and (pointer: coarse) {
+      .arrow-btn {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        min-height: 52px;
+      }
+      .arrow-btn svg {
+        width: 26px;
+        height: 26px;
+      }
+      .arrow-btn:hover {
+        background: white;
+        border-color: #cde0e9;
+        transform: none;
+      }
+      .arrow-btn:active {
+        background: #e6f0f5;
+        border-color: #b3cedf;
+        transform: scale(0.96);
+      }
     }
 
     /* ---- Right-aligned Carousel (no scrollbar, infinite loop) ---- */

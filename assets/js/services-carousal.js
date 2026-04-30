@@ -240,27 +240,53 @@
 
   track.addEventListener('transitionend', handleTransitionEnd);
 
-  prevBtn.addEventListener('click', (e) => {
+  // Enhanced click/touch handlers for mobile
+  const handleArrowInteraction = (direction, e) => {
     e.preventDefault();
     if (isTransitioning) return;
-    slidePrev();
+    
+    if (direction === 'prev') {
+      slidePrev();
+    } else {
+      slideNext();
+    }
+    
     pauseCarouselAuto();
     setTimeout(() => {
       if (!pauseAuto) return;
       resumeCarouselAuto();
     }, 3000);
-  });
+  };
 
-  nextBtn.addEventListener('click', (e) => {
+  prevBtn.addEventListener('click', (e) => handleArrowInteraction('prev', e));
+  nextBtn.addEventListener('click', (e) => handleArrowInteraction('next', e));
+
+  // Touch events for mobile
+  prevBtn.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    if (isTransitioning) return;
-    slideNext();
-    pauseCarouselAuto();
-    setTimeout(() => {
-      if (!pauseAuto) return;
-      resumeCarouselAuto();
-    }, 3000);
-  });
+    prevBtn.style.transform = 'scale(0.95)';
+  }, { passive: false });
+
+  nextBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    nextBtn.style.transform = 'scale(0.95)';
+  }, { passive: false });
+
+  prevBtn.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    prevBtn.style.transform = '';
+    handleArrowInteraction('prev', e);
+  }, { passive: false });
+
+  nextBtn.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    nextBtn.style.transform = '';
+    handleArrowInteraction('next', e);
+  }, { passive: false });
+
+  // Prevent touch events from bubbling to avoid conflicts
+  prevBtn.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+  nextBtn.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
 
   carouselContainer.addEventListener('mouseenter', () => {
     pauseCarouselAuto();
